@@ -4,7 +4,7 @@ module pulse_sync (
 	input rst_n   ,    // Asynchronous reset active low
 	input din_en  ,
 
-	output reg dout_en
+	output dout_en
 );
 	reg din_en_reg ;
 
