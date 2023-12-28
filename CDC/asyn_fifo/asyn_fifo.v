@@ -34,11 +34,15 @@ module asyn_fifo #(
     	) u_push_cnt(
     	.rst_n     (rst_n       ),
     	.clk 	   (wclk        ),
-    	.en 	   (wr_en_notf  ),
+    	.en 	   (wren_notf  ),
     	.cnt  	   (waddr       ),
     	.cnt_gray  (waddr_gray  ),
     	.cnt_gray_d(waddr_gray_d)
     	);
+     wire [AW : 0] raddr ;
+     wire [AW : 0] raddr_gray ;
+     wire [AW : 0] raddr_gray_d ;
+     wire          rden_notr ; // when empty cannot read
 
     // sync : wptr from wclk to rclk
     wire [AW : 0] waddr_gray_rclk ;
@@ -61,16 +65,13 @@ module asyn_fifo #(
     	.rst_n    (rst_n          ),
     	.clk      (wclk            ),
     	.data_in  (raddr_gray_d   ),
-    	.data_out (raddr_gray_rclk)
+    	.data_out (raddr_gray_wclk)
     	) ;
 
  /*-----------------------------------------------\
   --         pop / rd counter	          --
  \-----------------------------------------------*/
-     wire [AW : 0] raddr ;
-     wire [AW : 0] raddr_gray ;
-     wire [AW : 0] raddr_gray_d ;
-     wire 		   rden_notr ; // when empty cannot read
+
 
      assign rden_notr = rden && !rempty ;
 
