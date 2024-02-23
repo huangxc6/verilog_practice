@@ -16,17 +16,19 @@ module sync_fifo_ptr #(
 	output								full 
 );
 
+	parameter ADDR_WIDTH = $clog2(DATA_DEPTH) ;
+
 	// reg define
 	// 2 dim list -> RAM
-	reg	[DATA_WIDTH-1:0]		fifo_buffer [DATA_DEPTH - 1 : 0] ;
-	reg	[$clog2(DATA_DEPTH):0]	wr_ptr ;
-	reg	[$clog2(DATA_DEPTH):0]	rd_ptr ;
+	reg	[DATA_WIDTH-1:0] fifo_buffer [DATA_DEPTH - 1 : 0] ;
+	reg	[ADDR_WIDTH :0]	wr_ptr ;
+	reg	[ADDR_WIDTH :0]	rd_ptr ;
 
 	// wire define
-	wire	[$clog2(DATA_DEPTH) - 1 : 0]	wr_ptr_true ;
-	wire	[$clog2(DATA_DEPTH) - 1 : 0]	rd_ptr_true ;
-	wire									wr_ptr_msb  ;
-	wire									rd_ptr_msb  ;
+	wire	[ADDR_WIDTH - 1 : 0]	wr_ptr_true ;
+	wire	[ADDR_WIDTH - 1 : 0]	rd_ptr_true ;
+	wire							wr_ptr_msb  ;
+	wire							rd_ptr_msb  ;
 
 	assign {wr_ptr_msb, wr_ptr_true} = wr_ptr ;
 	assign {rd_ptr_msb, rd_ptr_true} = rd_ptr ;
