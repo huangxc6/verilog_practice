@@ -1,14 +1,18 @@
-// -----------------------------------------------------------------------------
-// Copyright (c) 2014-2024 All rights reserved
-// -----------------------------------------------------------------------------
-// Author : Huang Xiaochong huangxc@stu.pku.edu.cn
-// File   : register.v
-// Create : 2024-02-23 22:30:33
-// Revise : 2024-02-23 22:30:33
-// Editor : sublime text4, tab size (4)
+
 // -----------------------------------------------------------------------------
 /* Description:
 	instruction register
+The registers are used to store instructions sent from the data bus 
+into either the high 8-bit or low 8-bit registers.
+
+The ena signal is used to control whether to register or not.
+
+Each instruction is two bytes, 16 bits, the high 3 bits are the opcode and 
+the low 13 bits are the address (the CPU address bus is 13 bits and the addressing space is 8K bytes).
+
+The data bus of this design is 8 bits, and each instruction needs to be fetched twice, 
+first the high 8 bits and then the low 8 bits.
+
 */
 // Version: 0.1
 // -----------------------------------------------------------------------------
