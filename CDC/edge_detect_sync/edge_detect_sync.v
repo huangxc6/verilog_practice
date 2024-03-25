@@ -27,7 +27,8 @@ module edge_detect_sync (
 		end
 	end
 
-	assign dout_en = dout_en_reg[1] && !dout_en_reg[2] ;
+	assign dout_en = dout_en_reg[1] && !dout_en_reg[2] ; //rising edge
+    // assign dout_en = !dout_en_reg[1] && dout_en_reg[2] ; //falling edge
 
 
 endmodule
