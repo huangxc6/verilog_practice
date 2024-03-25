@@ -2,7 +2,7 @@
 
 ## 1. Metastability
 
-Metastbility refers to signals that do not assume stable 0 or 1 states for some duration of time at some point during normal operation of a design.   
+Metastability refers to signals that do not assume stable 0 or 1 states for some duration of time at some point during normal operation of a design.   
 
 ![Metastable](D:\BaiduSyncdisk\code practice\verilog_practice\CDC\images\Metastable.png)
 
